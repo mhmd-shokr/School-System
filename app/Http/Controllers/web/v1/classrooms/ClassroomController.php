@@ -15,7 +15,7 @@ class ClassroomController extends Controller
   {
     $myClasses=Classroom::all();
     $Grades=Grade::all();
-    return view('clssrooms.myClasses',compact('myClasses','Grades'));
+    return view('pages.clssrooms.myClasses',compact('myClasses','Grades'));
   }
 
   
@@ -109,7 +109,7 @@ public function filterClassRoom(Request $request){
 
   }
   
-  return view('clssrooms.myClasses', compact('Grades'))
+  return view('pages.clssrooms.myClasses', compact('Grades'))
         ->with('details', $search);
 }
 

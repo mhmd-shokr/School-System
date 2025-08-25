@@ -40,8 +40,7 @@
                         </button>
                     </div>
                     
-                    <form action="{{ route('classrooms.filter') }}" method="POST" class="mb-4">
-                        @csrf
+                    <form action="{{ route('classrooms.filter') }}" method="get" class="mb-4">
                         <div class="row justify-content-start">
                             <div class="col-md-5">
                                 <label for="Grade_id" class="form-label fw-bold text-primary mb-2">
@@ -96,20 +95,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if(isset($details))
-                                <?php $List_Classes=$details ?>
-                                @else
-                                <?php$List_Classes=$myClasses ?>
-                                @endif
+                            @if(isset($details))
+                            <?php $List_classes = $details ?>
+                            @else
+                            <?php $List_classes = $myClasses ?>
+                            @endif
                                 <?php $i = 0; ?>
-                                @foreach ($List_Classes as $My_Class)
+                                @foreach ( $List_classes as $My_Class)
                                     <tr>
                                         <?php    $i++; ?>
                                         <td><input type="checkbox" value="{{ $My_Class->id }}" class="box1">
                                         </td>
                                         <td>{{ $i }}</td>
                                         <td>{{ $My_Class->Name_class }}</td>
-                                        <td>{{ $My_Class->Grades->Name }}</td>
+                                        <td>{{ $My_Class->Grade->Name }}</td>
                                         <td>
                                             <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                                                 data-target="#edit{{ $My_Class->id }}"
@@ -118,7 +117,6 @@
                                                 data-target="#delete{{ $My_Class->id }}"
                                                 title="{{ trans('grades_trans.Delete') }}"><i class="fa fa-trash"></i></button>
                                                 <br><br>
-                                           
                                         </td>
                                     </tr>
 

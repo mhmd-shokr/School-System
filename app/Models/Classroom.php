@@ -15,10 +15,13 @@ class Classroom extends Model
         'Grade_id',
     ];
     
-    public function Grades()
+    public function Grade()
     {
         return $this->belongsTo(Grade::class, 'Grade_id');
     }
 
+    public function sections(){
+        return $this->hasMany(Section::class,'Class_id');
+    }
 
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\V1\Grades\GradeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Web\V1\classrooms\ClassroomController;
+use App\Http\Controllers\Web\V1\sections\SectionController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -35,6 +36,8 @@ Route::group([
     Route::resource('grade',GradeController::class);
     Route::resource('classrooms',ClassroomController::class);
     Route::delete('delete_all',[ClassroomController::class,'delete_all'])->name('delete_all');
-    Route::post('filterClassRoom',[ClassroomController::class,'filterClassRoom'])->name('classrooms.filter');
+    Route::get('filterClassRoom',[ClassroomController::class,'filterClassRoom'])->name('classrooms.filter');
+    Route::resource('Sections',SectionController::class);
+Route::get('/classes/{id}',[SectionController::class,'getClasses']);
 });
 require __DIR__.'/auth.php';
