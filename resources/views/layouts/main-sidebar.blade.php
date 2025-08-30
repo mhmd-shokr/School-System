@@ -73,6 +73,29 @@
                         </ul>
                     </li>
 
+                    {{-- Parent --}}
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#parent-menu">
+                            <div class="pull-left">
+                                <i class="ti-user"></i>
+                                <span class="right-nav-text">{{ trans('parent_trans.parents')}}</span>
+                            </div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="parent-menu" class="collapse" data-parent="#sidebarnav">
+                            <li>
+                                <a href="" class="right-nav-text">
+                                        {{ trans("parent_trans.list_parents") }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/Add_parent') }}" class="right-nav-text">
+                                        {{ trans("parent_trans.Add_parent") }}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- menu item chat-->
                     <li>
                         <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat

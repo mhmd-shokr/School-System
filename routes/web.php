@@ -6,6 +6,8 @@ use App\Http\Controllers\Web\V1\classrooms\ClassroomController;
 use App\Http\Controllers\Web\V1\sections\SectionController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Livewire\AddParent;
+use Livewire\Livewire;
 
 Route::middleware('guest')->group(function(){
     Route::get('/', function () {
@@ -29,15 +31,31 @@ Route::group([
         'verified'
     ]
 ], function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+    Livewire::setUpdateRoute(function($handle){
+        return Route::post('/livewire/update',$handle);
+    });
 
     Route::resource('grade',GradeController::class);
     Route::resource('classrooms',ClassroomController::class);
     Route::delete('delete_all',[ClassroomController::class,'delete_all'])->name('delete_all');
     Route::get('filterClassRoom',[ClassroomController::class,'filterClassRoom'])->name('classrooms.filter');
     Route::resource('Sections',SectionController::class);
-Route::get('/classes/{id}',[SectionController::class,'getClasses']);
+    Route::get('/classes/{id}',[SectionController::class,'getClasses']);
+
+
+    Route::get('/Add_Parent', function () {
+        return view('livewire.show_form');
+    });
+
+
 });
+
+
+
+
 require __DIR__.'/auth.php';

@@ -9,6 +9,8 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
+    @livewireStyles
+
 </head>
 
 <body>
@@ -54,6 +56,7 @@
  footer -->
 
     @include('layouts.footer-scripts')
+    @livewireScripts
 
 </body>
 
